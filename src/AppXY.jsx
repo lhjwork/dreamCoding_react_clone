@@ -21,6 +21,7 @@ export default function AppXY() {
         // setPostion(prev => ({x:e.clientX, y:prev.y}));
 
         // 객체의 변수가 여러개일때 
+        // 스프레드 연산자를 사용해서 변화시키고 싶은 것만 하는 것도 가능
         setPostion(prev => ({...prev, x:e.clientX,}));
 
     }}>
