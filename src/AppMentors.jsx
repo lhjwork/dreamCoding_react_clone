@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
+import personReducer from './reducer/person-reducer';
 
 export default function AppMentors() {
   // react에서 만들어진 state는 불변성을 유지해줘야 한다.
@@ -6,17 +7,17 @@ export default function AppMentors() {
   // 이를 이해하고자 한다면 객체의 가변성 및 불변성을 이해해야 한다. 
   // 객체를 만들면 객체마다 고유한 reference 값이 만들어진다.
   // 그래서 참조(reference) 값이 동일한 상태에서 아무리 변경해 봤자 객체는 변경 되지 않는다.
-  const [person, setPerson] = useState(initialPerson);
+
+  // const [person, setPerson] = useState(initialPerson);
+
+  const [person, dispatch] = useReducer(personReducer, initialPerson);
+
   const handleUpdate = () => {
     const prev = prompt(`누구의 이름을 바꾸고 싶은가요?`);
     const current = prompt(`이름을 무엇으로 바꾸고 싶은가요?`);
-    setPerson(person =>({...person, mentors:person.mentors.map((mentor)=>{
-      if(mentor.name === prev){
-        return {...mentor, name:current};
-      }else{
-        return mentor;
-      }
-    })}));
+    dispatch({type:'update',prev, current});
+   
+    
   }
 
   const handleAdd = () =>{
@@ -27,21 +28,15 @@ export default function AppMentors() {
     // setPerson(person => ({
     //   ...person, mentors: [...person.mentors, {name, title}]
     // }))
-
-    // 앞에다가 추가하고 싶을 때
-      setPerson(person => ({
-        // 객체의 위치만 변경하면 된다.
-      ...person, mentors: [ {name, title}, ...person.mentors]
-    }))
+    dispatch({type:'added',name, title});
+  
  
   }
   const handleDelete = () =>{
     const name = prompt(`누구를 삭제하고 싶은가요?`);
-    setPerson(person => ({
-      ...person,
-      mentors:person.mentors.filter((m)=>m.name !== name),
-    }))
- 
+
+  dispatch({type:'deleted',name});
+  
   }
 
 
