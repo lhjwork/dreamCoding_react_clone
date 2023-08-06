@@ -4,10 +4,11 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import AppMentors from "./AppMentors";
 import AppMentorsImmer from "./AppMentorsImmer";
+import AppForm from "./AppFrom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppMentorsImmer />
+    <AppForm />
   </React.StrictMode>
 );
 
