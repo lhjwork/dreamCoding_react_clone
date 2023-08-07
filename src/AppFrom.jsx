@@ -9,9 +9,9 @@ const AppForm = () => {
     console.log(form);
   };
 
-//   form에 있는 input 데이터는 uncontrol compoent로써 react의 상태관리와 달리 바로 수정된 화면을 확인 가능하다.그래서 form을 사용
-//  할때는 State에 의해서 value를 전달하고 onChane가 발생 할때 마다 state를 변경해주어야한다. 따로 관리해도 되지만 연관된 데이터라면 
-//  객체로 관리하는 것을 추천한다.
+  //   form에 있는 input 데이터는 uncontrol compoent로써 react의 상태관리와 달리 바로 수정된 화면을 확인 가능하다.그래서 form을 사용
+  //  할때는 State에 의해서 value를 전달하고 onChane가 발생 할때 마다 state를 변경해주어야한다. 따로 관리해도 되지만 연관된 데이터라면
+  //  객체로 관리하는 것을 추천한다.
   const handleChange = (e) => {
     const { name, value } = e.target;
     //[현재 전달 받는 key] : 값
